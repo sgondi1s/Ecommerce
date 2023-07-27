@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Ecommerce</title>
+  <link rel="stylesheet" href="Phase5_bootstrap/bootstrap.min.css">
+  <script src="Phase5_bootstrap/jquery.min.js"></script>
+  <script src="Phase5_bootstrap/bootstrap.min.js"></script>
+
+  <style>
+    .footer {
+      /*position: fixed;*/
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      background-color: #353535;
+      color: white;
+      text-align: center;
+  }
+  .thumbnail{
+    border-radius:25px;
+    border:2px solid #f0f2ff;
+    background-color:#f0f2ff;
+  }
+  .thumbnail a>img, .thumbnail>img{
+    height: 300px; 
+  }
+  .modal-header, h4, .close {
+    background-color: #5cb85c;
+    color:white !important;
+    text-align: center;
+    font-size: 30px;
+  }
+  .modal-footer {
+    background-color: #f9f9f9;
+  }
+  .carousel-inner{
+    height: 450px;
+  }
+  .thumbnail>a{
+    color:black;
+  }
+  .thumbnail a>img, .thumbnail>img{
+    border-radius:23px;
+  }
+  a>h1, a>p{
+    font-family:fangsong !important;
+  }
+  .addcart{
+    text-align: center;
+  }
+  .navbar{
+    border-radius:0px !important;
+  }
+  </style>
+  <script>
+
+function login(){
+        var usrname = document.getElementById("usrname").value;
+        var psw = document.getElementById("psw").value;
+  
+        if(usrname=="admin" && psw=="admin"){
+          alert("Login Success!!");
+        }
+        else{
+          alert("Authentication Fail!!");
+          return false;
+        }
+      }
+  
+      function menushow(menutype){
+        var home = document.getElementById("homeCarousel");
+        var homediv = document.getElementById("homediv");
+  
+        var men = document.getElementById("mendiv");
+        var women = document.getElementById("womendiv");
+        var kids = document.getElementById("kidsdiv");
+  
+        if(menutype == 'home'){
+          home.style.display = 'block';
+          homediv.style.display = 'block';
+          men.style.display = 'none';
+          women.style.display = 'none';
+          kids.style.display = 'none';
+        }
+        if(menutype == 'men'){
+          home.style.display = 'none';
+          homediv.style.display = 'none';
+          men.style.display = 'block';
+          women.style.display = 'none';
+          kids.style.display = 'none';
+        }
+        if(menutype == 'women'){
+          home.style.display = 'none';
+          homediv.style.display = 'none';
+          men.style.display = 'none';
+          women.style.display = 'block';
+          kids.style.display = 'none';
+        }
+        if(menutype == 'kids'){
+          home.style.display = 'none';
+          homediv.style.display = 'none';
+          men.style.display = 'none';
+          women.style.display = 'none';
+          kids.style.display = 'block';
+        }
+  
+      }
+  </script>
+</head>
+
+<body>
+  <nav class="navbar navbar-inverse bg-success">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="#" onclick="menushow('home');">ShopMart</a>
+      </div>
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="#" onclick="menushow('home');">Home</a></li>
+        <li><a href="#" onclick="menushow('men');">Men</a></li>
+        <li><a href="#" onclick="menushow('women');">Women</a></li>
+        <li><a href="#" onclick="menushow('kids');">Kids</a></li>
+      </ul>
+      <form class="navbar-form navbar-right">
+        <div class="input-group">
+          <input type="text" class="form-control" placeholder="Search" name="search">
+          <div class="input-group-btn">
+            <button class="btn btn-default" type="submit">
+              <i class="glyphicon glyphicon-search"></i>
+            </button>
+          </div>
+        </div>
+        <div class="input-group">
+          <div class="input-group-btn">
+            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal">Login</button>
+          </div>
+      </div>
+      <div class="input-group">
+        <div class="input-group-btn">
+          <button class="btn btn-default">
+          <span class="glyphicon glyphicon-shopping-cart"></span> </button>
+        </div>
+      </div>
+      </form>      
+    </div>
+  </nav>
+
+  <div id="homeCarousel" class="carousel slide" data-ride="carousel">
+    <!-- Indicators -->
+    <ol class="carousel-indicators">
+      <li data-target="#homeCarousel" data-slide-to="0" class="active"></li>
+      <li data-target="#homeCarousel" data-slide-to="1"></li>
+      <li data-target="#homeCarousel" data-slide-to="2"></li>
+    </ol>
+
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner">
+      <div class="item active">
+        <img src="img/C_1.jpg" alt="Offer1" style="width:100%;">
+      </div>
+
+      <div class="item">
+        <img src="img/C_4.jpg" alt="Offer2" style="width:100%;">
+      </div>
+    
+      <div class="item">
+        <img src="img/C_3.jpeg" alt="Offer3" style="width:100%;">
+      </div>
+    </div>
+
+    <!-- Left and right controls -->
+    <a class="left carousel-control" href="#homeCarousel" data-slide="prev">
+      <span class="glyphicon glyphicon-chevron-left"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="right carousel-control" href="#homeCarousel" data-slide="next">
+      <span class="glyphicon glyphicon-chevron-right"></span>
+      <span class="sr-only">Next</span>
+    </a>
+  </div>
+  <div class="row" id="homediv">
+    <div class="col-md-4">
+      <div class="thumbnail">
+        <a href="img/Home_5.jfif" target="_blank">
+          <img src="img/Home_5.jfif" alt="Nature" style="width:100%">
+          </a>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="thumbnail">
+        <a href="img/Home2_3.jfif" target="_blank">
+          <img src="img/Home2_3.jfif" alt="Nature" style="width:100%">           
+        </a>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="thumbnail">
+        <a href="img/Home2_4.png" target="_blank">
+          <img src="img/Home2_4.png" alt="Nature" style="width:100%">         
+        </a>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="thumbnail">
+        <a href="img/men/men_1.jpeg" target="_blank">
+          <img src="img/men/men_1.jpeg" alt="Nature" style="width:100%">
+          <h1>Champions T-shirt</h1>
+          <p class="price">$19.99</p>
+          <p>Consider alternatives to the gym! Champion Authentic Originals are sports wear classics 
+            that have been updated with the most recent fabric and fashion trends.</p>            
+        </a>
+        <p class="addcart"><button class="btn btn-success">Add to Cart</button></p>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="thumbnail">
+        <a href="img/women/W_3.jfif" target="_blank">
+          <img src="img/women/W_3.jfif" alt="Nature" style="width:100%">
+          <h1>Lulus Dress</h1>
+          <p class="price">$49.99</p>
+          <p>The wrap style, v-neckline, frill hemline, and short butterfly sleeves make this maxi a versatile show item.
+            The colors were so happy and vibrant
+          </p>            
+        </a>
+        <p class="addcart"><button class="btn btn-success">Add to Cart</button></p>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="thumbnail">
+        <a href="img/women/W_5.jfif" target="_blank">
+          <img src="img/women/W_5.jfif" alt="Nature" style="width:100%">
+          <h1>HALF IT Shirt</h1>
+          <p class="price">$39.99</p>
+          <p>HALF IT is a professional women's clothing brand that has been selling on ShopMart for many years. 
+            We have a wide range of women's fashion, including casual and business.</p>            
+        </a>
+        <p class="addcart"><button class="btn btn-success">Add to Cart</button></p>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="thumbnail">
+        <a href="img/men/Semo_1.jfif" target="_blank">
+          <img src="img/men/Semo_1.jfif" alt="Nature" style="width:100%">
+          <h1>SEMO T-shirt</h1>
+          <p class="price">$29.99</p>
+          <p>Southeast Missouri State University graphic on front, with an older version of the SEMO logo Basic design 
+            that will quickly become your favorite Redhawks tee</p>            
+        </a>
+        <p class="addcart"><button class="btn btn-success">Add to Cart</button></p>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" role="dialog">
+      <div class="modal-dialog">
+      
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header" style="padding:35px 50px;">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4><span class="glyphicon glyphicon-lock"></span> Login</h4>
+          </div>
+          <div class="modal-body" style="padding:40px 50px;">
+            <form role="form">
+              <div class="form-group">
+                <label for="usrname"><span class="glyphicon glyphicon-user"></span> Username</label>
+                <input type="text" class="form-control" id="usrname" placeholder="Enter email" required>
+              </div>
+              <div class="form-group">
+                <label for="psw"><span class="glyphicon glyphicon-eye-open"></span> Password</label>
+                <input type="password" class="form-control" id="psw" placeholder="Enter password" required>
+              </div>
+              <div class="checkbox">
+                <label><input type="checkbox" value="" checked>Remember me</label>
+              </div>
+                <button type="button" class="btn btn-success btn-block" onclick="login()" data-dismiss="modal">
+                  <span class="glyphicon glyphicon-off"></span> Login</button>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-danger btn-default pull-left" data-dismiss="modal">
+              <span class="glyphicon glyphicon-remove"></span> Cancel</button>
+            <p>Not a member? <a href="#">Sign Up</a></p>
+            <p>Forgot <a href="#">Password?</a></p>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+    
+    <div class="row" id="mendiv" style="display: none;">
+      <div class="col-md-4">
+        <div class="thumbnail">
+          <a href="img/men/men_1.jpeg" target="_blank">
+            <img src="img/men/men_1.jpeg" alt="Nature" style="width:100%">
+            <h1>Champions T-shirt</h1>
+            <p class="price">$19.99</p>
+            <p>Consider alternatives to the gym! Champion Authentic Originals are sports wear classics 
+              that have been updated with the most recent fabric and fashion trends.</p>            
+          </a>
+          <p  class="addcart"><button class="btn btn-success">Add to Cart</button></p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="thumbnail">
+          <a href="img/men/Semo_1.jfif" target="_blank">
+            <img src="img/men/Semo_1.jfif" alt="Nature" style="width:100%">
+            <h1>SEMO T-shirt</h1>
+            <p class="price">$29.99</p>
+            <p>Southeast Missouri State University graphic on front, with an older version of the SEMO logo Basic design 
+              that will quickly become your favorite Redhawks tee</p>            
+          </a>
+          <p class="addcart"><button class="btn btn-success">Add to Cart</button></p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="thumbnail">
+          <a href="img/men/men_3.jpeg" target="_blank">
+            <img src="img/men/men_3.jpeg" alt="Nature" style="width:100%">
+            <h1>Old Navy T-shirt</h1>
+            <p class="price">$11.99</p>
+            <p>Softly cleaned for a luxurious feel. Short sleeves, rib-knit crew neck, tag-free for increased comfort, 
+              pieced trim inside neck for added durability Soft and light jersey.</p>            
+          </a>
+          <p class="addcart"><button class="btn btn-success">Add to Cart</button></p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="thumbnail">
+          <a href="img/men/Tom_1.jfif" target="_blank">
+            <img src="img/men/Tom_1.jfif" alt="Nature" style="width:100%">
+            <h1>Tommy Hilfiger</h1>
+            <p class="price">$19.99</p>
+            <p>For good reason, Tommy Hilfiger's graphic men's t-shirt is a best-seller. It's a year-round classic that'll 
+              be on heavy rotation in any wardrobe, cut in pure cotton.</p>            
+          </a>
+          <p class="addcart"><button class="btn btn-success">Add to Cart</button></p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="thumbnail">
+          <a href="img/men/men_5.jpeg" target="_blank">
+            <img src="img/men/men_5.jpeg" alt="Nature" style="width:100%">
+            <h1>Old Navy T-shirt</h1>
+            <p class="price">$11.99</p>
+            <p>Softly cleaned for a luxurious feel. Short sleeves, rib-knit crew neck, tag-free for increased comfort, 
+              pieced trim inside neck for added durability Soft and light jersey.</p>            
+          </a>
+          <p class="addcart"><button class="btn btn-success">Add to Cart</button></p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="thumbnail">
+          <a href="img/men/men_6.jpeg" target="_blank">
+            <img src="img/men/men_6.jpeg" alt="Nature" style="width:100%">
+            <h1>HALF IT T-shirt</h1>
+            <p class="price">$15.99</p>
+            <p>HALF IT is a professional men's clothing brand that has been selling on ShopMart for many years. 
+              We have a wide range of men's fashion, including casual and business.</p>            
+          </a>
+          <p class="addcart"><button class="btn btn-success">Add to Cart</button></p>
+        </div>
+      </div>
+    </div>
+    <div class="row" id="womendiv" style="display: none;">
+      <div class="col-md-4">
+        <div class="thumbnail">
+          <a href="img/women/W_1.jfif" target="_blank">
+            <img src="img/women/W_1.jfif" alt="Nature" style="width:100%">
+            <h1>Old Navy T-shirt</h1>
+            <p class="price">$29.99</p>
+            <p>Softly cleaned for a luxurious feel. Short sleeves, rib-knit crew neck, tag-free for increased comfort, 
+              pieced trim inside neck for added durability Soft and light jersey.</p>            
+          </a>
+          <p class="addcart"><button class="btn btn-success">Add to Cart</button></p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="thumbnail">
+          <a href="img/women/W_2.jfif" target="_blank">
+            <img src="img/women/W_2.jfif" alt="Nature" style="width:100%">
+            <h1>Nike T-shirt</h1>
+            <p class="price">$49.99</p>
+            <p>This Nike Plus Size T-shirt features Dri-FIT technology for long-lasting 
+              comfort and comes in a flexible solid color that can be mixed and matched.</p>            
+          </a>
+          <p class="addcart"><button class="btn btn-success">Add to Cart</button></p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="thumbnail">
+          <a href="img/women/Semo.jfif" target="_blank">
+            <img src="img/women/Semo.jfif" alt="Nature" style="width:100%">
+            <h1>SEMO T-shirt</h1>
+            <p class="price">$29.99</p>
+            <p>Southeast Missouri State University graphic on front, with an older version of the SEMO logo Basic design 
+              that will quickly become your favorite Redhawks tee</p>            
+          </a>
+          <p class="addcart"><button class="btn btn-success">Add to Cart</button></p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="thumbnail">
+          <a href="img/women/W_4.jfif" target="_blank">
+            <img src="img/women/W_4.jfif" alt="Nature" style="width:100%">
+            <h1>FINDLOVEWEDDING</h1>
+            <p class="price">$499.99</p>
+            <p>FINDLOVEWEDDING has been making dresses for over 15 years and employs experienced designers and workers. 
+              This dress is appropriate for all the seasons.</p>            
+          </a>
+          <p class="addcart"><button class="btn btn-success">Add to Cart</button></p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="thumbnail">
+          <a href="img/women/W_5.jfif" target="_blank">
+            <img src="img/women/W_5.jfif" alt="Nature" style="width:100%">
+            <h1>HALF IT T-shirt</h1>
+            <p class="price">$29.99</p>
+            <p>HALF IT is a professional women's clothing brand that has been selling on ShopMart for many years. 
+              We have a wide range of women's fashion, including casual and business.</p>            
+          </a>
+          <p class="addcart"><button class="btn btn-success">Add to Cart</button></p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="thumbnail">
+          <a href="img/women/W_6.jfif" target="_blank">
+            <img src="img/women/W_6.jfif" alt="Nature" style="width:100%">
+            <h1>Old Navy T-shirt</h1>
+            <p class="price">$39.99</p>
+            <p>Softly cleaned for a luxurious feel. Short sleeves, rib-knit crew neck, tag-free for increased comfort, 
+              pieced trim inside neck for added durability Soft and light jersey.</p>            
+          </a>
+          <p class="addcart"><button class="btn btn-success">Add to Cart</button></p>
+        </div>
+      </div>
+    </div>
+    <div class="row" id="kidsdiv" style="display: none;">
+      <div class="col-md-4">
+        <div class="thumbnail">
+          <a href="img/kids/K_1.jfif" target="_blank">
+            <img src="img/kids/K_1.jfif" alt="Nature" style="width:100%">
+            <h1>US Polo Shirt</h1>
+            <p class="price">$49.99</p>
+            <p>The United States Polo Association, founded in 1890, is the governing body for the sport of polo in the
+               United States. Enjoy the classic sophistication, luxury, and comfort.</p>            
+          </a>
+          <p class="addcart"><button class="btn btn-success">Add to Cart</button></p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="thumbnail">
+          <a href="img/kids/K_2.jfif" target="_blank">
+            <img src="img/kids/K_2.jfif" alt="Nature" style="width:100%">
+            <h1>Nike Sleeveless</h1>
+            <p class="price">$39.99</p>
+            <p>This Nike Plus Size T-shirt features Dri-FIT technology for long-lasting 
+              comfort and comes in a flexible solid color.</p>            
+          </a>`
+          <p class="addcart"><button class="btn btn-success">Add to Cart</button></p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="thumbnail">
+          <a href="img/kids/Semo_1.jfif" target="_blank">
+            <img src="img/kids/Semo_1.jfif" alt="Nature" style="width:100%">
+            <h1>SEMO T-shirt</h1>
+            <p class="price">$29.99</p>
+            <p>Southeast Missouri State University graphic on front, with an older version of the SEMO logo Basic design 
+              that will quickly become your favorite Redhawks tee</p>            
+          </a>
+          <p class="addcart"><button class="btn btn-success">Add to Cart</button></p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="thumbnail">
+          <a href="img/kids/K_3.jfif" target="_blank">
+            <img src="img/kids/K_3.jfif" alt="Nature" style="width:100%">
+            <h1>HALF IT Shirt</h1>
+            <p class="price">$24.99</p>
+            <p>HALF IT is a professional women's clothing brand that has been selling on ShopMart for many years. 
+              We have a wide range of women's fashion, including casual and business.</p>            
+          </a>
+          <p class="addcart"><button class="btn btn-success">Add to Cart</button></p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="thumbnail">
+          <a href="img/kids/K_5.jfif" target="_blank">
+            <img src="img/kids/K_5.jfif" alt="Nature" style="width:100%">
+            <h1>OCHENTA Jeans</h1>
+            <p class="price">$59.99</p>
+            <p>Long sleeve cotton button down shirt for men and boys in a standard fit. Men's button-up denim shirt 
+              with two breast pockets.</p>            
+          </a>
+          <p class="addcart"><button class="btn btn-success">Add to Cart</button></p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="thumbnail">
+          <a href="img/kids/K_4.jfif" target="_blank">
+            <img src="img/kids/K_4.jfif" alt="Nature" style="width:100%">
+            <h1>Levi's T-shirt</h1>
+            <p class="price">$49.99</p>
+            <p>Our tees and jeans were meant to be together. This one features our world-famous "batwing" logo, which 
+              is inspired by the curved.</p>            
+          </a>
+          <p class="addcart"><button class="btn btn-success">Add to Cart</button></p>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  <div class="footer">
+    <h3>Copyright © 2022, shopmart.com</h3>
+    <p>All Rights Reserved</p>
+    <p>Developed & Maintained by Front-end Developers
+    </p>
+  </div> 
+  </body>
